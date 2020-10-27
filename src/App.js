@@ -3,13 +3,33 @@ import './App.css';
 
 export default class App extends React.Component {
   state = {
-    boogerCounter: 0,
+    counter: 0,
+    nameInput: '',
+    displayName: ''
   }
 
-  handleBoogerClick = (e) => {
+  handleClick = (e) => {
     this.setState({ 
-      boogerCounter: this.state.boogerCounter + 1 
+      counter: this.state.counter + 1 
     })
+  }
+
+  handleDraculaClick = (e) => {
+    this.setState({ 
+      nameInput: 'dracula',
+    })
+
+  }
+
+  handleChange = (e) => {
+    this.setState({ 
+      nameInput: e.target.value,
+      counter: this.state.counter + 1
+    })
+  }
+
+  handleDisplayName = (e) => {
+    this.setState({ displayName: this.state.nameInput })
   }
 
   render() {
@@ -17,11 +37,22 @@ export default class App extends React.Component {
         <div className="container">
             <h1>Click the button to increment the counter</h1>
             <div className="flex">
-            <button onClick={this.handleBoogerClick}>
+            <button onClick={this.handleClick}>
               Click to count
             </button>
+            <button onClick={this.handleDraculaClick}>
+              I am actaully just count dracula
+            </button>
+
             <div>
-              Current count: {this.state.boogerCounter}
+              Current count: {this.state.counter}
+            </div>
+            <div>
+              <input value={this.state.nameInput} onChange={this.handleChange} />
+            </div>
+            <button onClick={this.handleDisplayName}>Show my name</button>
+            <div>
+              {this.state.displayName}
             </div>
           </div>
         </div>

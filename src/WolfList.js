@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import MyAmazingArticle from './MyAmazingArticle.js';
-import articles from './articles.js';
+import wolves from './wolves.js';
 
 export default class ArticleList extends Component {
     render() {
         return (
             <div className="articles">
           {
-            articles.map(article => 
+            wolves.map(wolf => 
               <MyAmazingArticle 
-                caption={article.title} 
-                color={article.background} />)
+                caption={wolf.title} 
+                color={wolf.background}
+                size={wolf.size}
+                />)
           }
           </div>
         )

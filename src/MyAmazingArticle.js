@@ -5,7 +5,8 @@ export default class MyAmazingArticle extends React.Component {
         return (
           <div className='article' style={{ background: this.props.color }}>
             <img className='wolf' src="images/wolf.png" alt='wolf'/>
-        <div>{this.props.caption}</div>
+            <div>{this.props.caption}</div>
+            <h3>{this.props.size}</h3>
           </div>
         );
     }

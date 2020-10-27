@@ -14,6 +14,10 @@ const articles = [
     {
         title: 'hi i am happy wolf',
         background: 'lightgreen',
+    },
+    {
+        title: 'hi i am funny wolf',
+        background: 'pink',
     }
 ]
 

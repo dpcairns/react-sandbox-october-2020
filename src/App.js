@@ -7,8 +7,8 @@ import ArticleList from './ArticleList.js';
 export default class App extends React.Component {
   render() {
       return (
-        <div>
-        <h1>Time to click the legos together!</h1>
+        <div className="grid-stuff">
+          <h1>Time to click the legos together!</h1>
           <MySpecialHeader name="dani" />
           <ArticleList />
           <MySpecialFooter phone="345-456-5431" />

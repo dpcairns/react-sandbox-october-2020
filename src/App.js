@@ -3,6 +3,7 @@ import './App.css';
 import MySpecialFooter from './MySpecialFooter.js';
 import MySpecialHeader from './MySpecialHeader.js';
 import WolfList from './WolfList.js';
+import wolves from './wolves.js';
 
 export default class App extends React.Component {
   render() {
@@ -10,7 +11,7 @@ export default class App extends React.Component {
         <div className="grid-stuff">
           <h1>Time to click the legos together!</h1>
           <MySpecialHeader name="dani" />
-          <WolfList />
+          <WolfList wolves={wolves}/>
           <MySpecialFooter phone="345-456-5431" />
         </div>
       );

@@ -1,13 +1,38 @@
 import React, { Component } from 'react'
 import MyAmazingArticle from './MyAmazingArticle.js';
-import wolves from './wolves.js';
 
-export default class ArticleList extends Component {
+export default class WolfList extends Component {
+  state = {
+    filter: ''
+  }
+
+  handleChange = e => {
+    this.setState({
+      filter: e.target.value
+    });
+  }
+
     render() {
+        const filteredWolves = this.props.wolves.filter((wolf) => {
+          // code golf: this.props.wolves.filter((wolf) => !this.state.filter || (wolf.size === this.state.filter))
+          if (!this.state.filter) return true;
+
+          if (wolf.size === this.state.filter) return true;
+
+          return false
+        });
+
         return (
+          <>
+            <select onChange={this.handleChange}>
+              <option value=''>Show All</option>
+              <option value='small'>Small</option>
+              <option value='medium'>Medium</option>
+              <option value='large'>Large</option>
+            </select>
             <div className="articles">
           {
-            wolves.map(wolf => 
+            filteredWolves.map(wolf => 
               <MyAmazingArticle 
                 caption={wolf.title} 
                 color={wolf.background}
@@ -15,6 +40,7 @@ export default class ArticleList extends Component {
                 />)
           }
           </div>
+        </>
         )
     }
 }

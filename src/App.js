@@ -10,10 +10,10 @@ export default class App extends React.Component {
         <div>
         <h1>Time to click the legos together!</h1>
           <MySpecialHeader name="dani" />
-          <MyAmazingArticle />
-          <MyAmazingArticle />
-          <MyAmazingArticle />
-          <MyAmazingArticle />
+          <MyAmazingArticle caption="hi i am thirsty wolf"/>
+          <MyAmazingArticle caption="hi i am hungry wolf" />
+          <MyAmazingArticle caption="hi i am bad wolf" />
+          <MyAmazingArticle caption="hi i am good wolf"/>
           <MySpecialFooter phone="345-456-5431" />
         </div>
       );

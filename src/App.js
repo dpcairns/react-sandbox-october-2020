@@ -1,15 +1,22 @@
-import React from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import ChildWithInput from './ChildWithInput.js';
 
-export default class App extends React.Component {
-  render() {
-      return (
-        <div className="container">
-          <h1>It's react time!</h1>
-          <div className="flex">
-            Do react stuff here.
-          </div>
-        </div>
-      );
-  }
+export default class ParentWithState extends Component {
+    state = {
+        balance: '',
+    }
+
+    swipeDebitCard = (e) => {
+        this.setState({ balance: e.target.value })
+    }
+
+    render() {
+
+        return (
+            <ChildWithInput 
+            balance={this.state.balance}
+            swipeDebitCard={this.swipeDebitCard}
+             />
+        )
+    }
 }

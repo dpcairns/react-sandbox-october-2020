@@ -11,7 +11,13 @@ export default class MySpecialHeader extends React.Component {
                 </li>
                 <li>
                     <Link to="/list" >List</Link>
+                    
                 </li>
+                <li>
+                    <Link to="/fetch" >Fetch</Link>
+                    
+                </li>
+
             </ul>
             </div>
         );

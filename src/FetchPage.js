@@ -10,26 +10,28 @@ import fetch from 'superagent';
 export default class FetchPage extends Component {
     state = {
         quotes: [],
-        character: ''
+        character: 'fry'
     }
 
     componentDidMount = async () => {
-        const response = await fetch.get('http://futuramaapi.herokuapp.com/api/characters/fry');
-
-        // await sleep(2000)
-        this.setState({ quotes: response.body });
+        await this.fetchQuotes();
     }
 
     handleClick = async (e) => {
         e.preventDefault();
-        const response = await fetch.get(`http://futuramaapi.herokuapp.com/api/characters/${this.state.character}`);
 
-        // await sleep(2000)
-        this.setState({ quotes: response.body });
+        await this.fetchQuotes();
     }
 
     handleChange = (e) => {
         this.setState({ character: e.target.value  });
+    }
+
+    fetchQuotes = async () => {
+        const response = await fetch.get(`http://futuramaapi.herokuapp.com/api/characters/${this.state.character}`);
+
+        // await sleep(2000)
+        this.setState({ quotes: response.body });
     }
 
     render() {

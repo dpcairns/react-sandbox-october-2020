@@ -9,30 +9,44 @@ import fetch from 'superagent';
 
 export default class FetchPage extends Component {
     state = {
-        quotes: []
+        quotes: [],
+        character: ''
     }
 
     componentDidMount = async () => {
-        const response = await fetch.get('http://futuramaapi.herokuapp.com/api/quotes');
+        const response = await fetch.get('http://futuramaapi.herokuapp.com/api/characters/fry');
 
         // await sleep(2000)
         this.setState({ quotes: response.body });
     }
 
+    handleClick = async (e) => {
+        e.preventDefault();
+        const response = await fetch.get(`http://futuramaapi.herokuapp.com/api/characters/${this.state.character}`);
+
+        // await sleep(2000)
+        this.setState({ quotes: response.body });
+    }
+
+    handleChange = (e) => {
+        this.setState({ character: e.target.value  });
+    }
+
     render() {
         return (
             <div className="fetch">
+                <form onSubmit={this.handleClick}>
+                <input onChange={this.handleChange} />
+                <button >Search by character</button>
+                </form>
                 {
                 this.state.quotes.length === 0 
-                ? <iframe 
-                    src="https://giphy.com/embed/xTk9ZvMnbIiIew7IpW" 
-                    title={Math.random()} 
-                    width="480" 
-                    height="480" 
-                    frameBorder="0" 
-                    className="giphy-embed" 
-                    allowFullScreen/>
-                : JSON.stringify(this.state.quotes)
+                ? 'loading!!!'
+                : this.state.quotes.map(quote => <div key={quote.quote}>
+                    <p>{quote.character}</p>
+                    <img src={quote.image} alt={quote.character} width="100" height="100"/>
+                    <p>{quote.quote}</p>
+                    </div>)
                 }
             </div>
         )

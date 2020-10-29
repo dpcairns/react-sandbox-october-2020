@@ -17,7 +17,7 @@ export default class FetchPage extends Component {
         await this.fetchQuotes();
     }
 
-    handleClick = async (e) => {
+    handleSubmit = async (e) => {
         e.preventDefault();
 
         await this.fetchQuotes();
@@ -37,10 +37,10 @@ export default class FetchPage extends Component {
     render() {
         return (
             <div className="fetch">
-                <form onSubmit={this.handleClick}>
+            <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleChange} />
-                <button >Search by character</button>
-                </form>
+                <button>Search by character</button>
+            </form>
                 {
                 this.state.quotes.length === 0 
                 ? 'loading!!!'

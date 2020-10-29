@@ -26,3 +26,12 @@ body {
   width: 100px;
   height: 100px;
 }
+
+.home {
+  border: solid 1px white;
+  padding: 50px
+}
+
+.selected {
+  color: yellow
+}

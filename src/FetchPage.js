@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import fetch from 'superagent';
 
-const sleep = (time) => new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve()
-    }, time)
-});
+// const sleep = (time) => new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve()
+//     }, time)
+// });
 
 export default class FetchPage extends Component {
     state = {
@@ -15,10 +15,7 @@ export default class FetchPage extends Component {
     componentDidMount = async () => {
         const response = await fetch.get('http://futuramaapi.herokuapp.com/api/quotes');
 
-        console.log('=============================\n')
-        console.log('|| response', response.body)
-        console.log('\n=============================')
-        await sleep(2000)
+        // await sleep(2000)
         this.setState({ quotes: response.body });
     }
 

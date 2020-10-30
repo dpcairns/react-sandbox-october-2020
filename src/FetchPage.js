@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fetch from 'superagent';
+import { Link } from 'react-router-dom';
 
 // const sleep = (time) => new Promise((resolve, reject) => {
 //     setTimeout(() => {
@@ -10,7 +11,8 @@ import fetch from 'superagent';
 export default class FetchPage extends Component {
     state = {
         quotes: [],
-        character: 'fry'
+        character: 'fry',
+        loading: false
     }
 
     componentDidMount = async () => {
@@ -28,10 +30,18 @@ export default class FetchPage extends Component {
     }
 
     fetchQuotes = async () => {
-        const response = await fetch.get(`http://futuramaapi.herokuapp.com/api/characters/${this.state.character}`);
+        this.setState({ loading: true })
+        const response = await fetch.get(`http://futuramaapi.herokuapp.com/api/quotes`);
 
-        // await sleep(2000)
-        this.setState({ quotes: response.body });
+        this.setState({ 
+            quotes: response.body, 
+            loading: false,
+         });
+    }
+
+    handleClick = async (quote) => {
+        // how can i get the character that i clicked on?
+        this.props.history.push(`/quotes/${quote.character}`);
     }
 
     render() {
@@ -42,13 +52,19 @@ export default class FetchPage extends Component {
                 <button>Search by character</button>
             </form>
                 {
-                this.state.quotes.length === 0 
+                this.state.loading
                 ? 'loading!!!'
-                : this.state.quotes.map(quote => <div key={quote.quote}>
-                    <p>{quote.character}</p>
-                    <img src={quote.image} alt={quote.character} width="100" height="100"/>
-                    <p>{quote.quote}</p>
-                    </div>)
+                // what if i wanted an onClick handler inside of a map?
+                : this.state.quotes.map(quote => 
+                    // we could use a link . . .
+                    <Link to={`/quotes/${quote.character}`}>
+                        {/* or we could use an anonymous callback in our onClick */}
+                        <div key={quote.quote} onClick={(e) => this.handleClick(quote)}>
+                            <p>{quote.character}</p>
+                            <img src={quote.image} alt={quote.character} width="100" height="100"/>
+                            <p>{quote.quote}</p>
+                        </div>
+                    </Link>)
                 }
             </div>
         )

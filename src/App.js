@@ -10,6 +10,7 @@ import WolfPage from './WolfPage.js';
 import MySpecialHeader from './MySpecialHeader.js';
 import MySpecialFooter from './MySpecialFooter.js';
 import FetchPage from './FetchPage.js';
+import DetailPage from './DetailPage.js';
 
 export default class App extends Component {
     render() {
@@ -32,6 +33,12 @@ export default class App extends Component {
                         path="/fetch" 
                         exact
                         render={(routerProps) => <FetchPage {...routerProps} />} 
+                    />
+                    <Route 
+                        // a special way of defining a variable in a react-router app
+                        path="/quotes/:booger" 
+                        exact
+                        render={(routerProps) => <DetailPage {...routerProps} />} 
                     />
                     </Switch>
                     <MySpecialFooter />

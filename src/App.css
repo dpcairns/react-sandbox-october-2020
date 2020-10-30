@@ -42,3 +42,24 @@ body {
   width: 100%;
   background-color: white;
 }
+
+main {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+@media (max-width: 600px) {
+  .fetch {
+    background: orange;
+  }
+}
+
+
+@media (min-width: 900px) {
+  .fetch {
+    background:lightblue;
+  }
+}

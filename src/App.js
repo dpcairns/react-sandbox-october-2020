@@ -11,6 +11,7 @@ import MySpecialHeader from './MySpecialHeader.js';
 import MySpecialFooter from './MySpecialFooter.js';
 import FetchPage from './FetchPage.js';
 import DetailPage from './DetailPage.js';
+import PaginationPage from './PaginationPage.js';
 
 export default class App extends Component {
     render() {
@@ -39,6 +40,12 @@ export default class App extends Component {
                         path="/quotes/:booger" 
                         exact
                         render={(routerProps) => <DetailPage {...routerProps} />} 
+                    />
+                                        <Route 
+                        // a special way of defining a variable in a react-router app
+                        path="/pagination" 
+                        exact
+                        render={(routerProps) => <PaginationPage {...routerProps} />} 
                     />
                     </Switch>
                     <MySpecialFooter />
